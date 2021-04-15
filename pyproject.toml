@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "testcode"
+version = "0.1.0"
+description = ""
+authors = ["saikat <saikatsakura@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.2.3"
+xlrd = "^2.0.1"
+openpyxl = "^3.0.7"
+matplotlib = "^3.4.1"
+PyQt5 = "^5.15.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

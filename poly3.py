@@ -12,11 +12,13 @@ import seaborn as sns
 typeMap = {
     1: 'Hook-WaterStain', 2: 'Polygon', 3: 'SymmetryMoon'
 }
-
+plt.ioff()
 def generateImage(typeInfo: int, inputFolderLoc: str):
     outputFolder = os.path.join(os.getcwd(), typeMap[typeInfo])
 
     if os.path.exists(outputFolder) and os.path.isdir(outputFolder):
+        for file in os.listdir(outputFolder):
+            os.remove(f'{outputFolder}/{file}')
         os.removedirs(outputFolder)
     
     os.mkdir(outputFolder)
@@ -47,10 +49,9 @@ def generateImage(typeInfo: int, inputFolderLoc: str):
                 print(f'data size = {dataSize}, largest index = {largestDataIndex}')
             
         plt.scatter(largestDf[largestDf.columns[0]].tolist(), 
-            largestDf[largestDf.columns[1]].tolist(), s=2, alpha=0.3, cmap='viridis')  
-        plt.savefig(os.path.join(outputFolder, os.path.splitext(csvFile)[0] + '.png'), dpi=300)  
-        
-
+            largestDf[largestDf.columns[1]].tolist(), s=2) 
+        plt.savefig(os.path.join(outputFolder, os.path.splitext(csvFile)[0] + '.png'), dpi=600)  
+        plt.close()
 
 
 if __name__=='__main__':

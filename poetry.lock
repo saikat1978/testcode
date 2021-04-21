@@ -151,6 +151,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "pyzbar"
+version = "0.1.8"
+description = "Read one-dimensional barcodes and QR codes from Python 2 and 3."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+scripts = ["Pillow (>=3.2.0)"]
+
+[[package]]
 name = "scipy"
 version = "1.6.1"
 description = "SciPy: Scientific Library for Python"
@@ -199,7 +210,7 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "4eeb67e549e0aac552e26d5bb6ad3583c5750b98ddc6558ae588aef805eb8456"
+content-hash = "433b60093884b29d610f039ba79cead3bc6a4dba08c56b6f5ff33e2e462e0b8e"
 
 [metadata.files]
 cycler = [
@@ -421,6 +432,11 @@ python-dateutil = [
 pytz = [
     {file = "pytz-2021.1-py2.py3-none-any.whl", hash = "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"},
     {file = "pytz-2021.1.tar.gz", hash = "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da"},
+]
+pyzbar = [
+    {file = "pyzbar-0.1.8-py2.py3-none-any.whl", hash = "sha256:0e204b904e093e5e75aa85e0203bb0e02888105732a509b51f31cff400f34265"},
+    {file = "pyzbar-0.1.8-py2.py3-none-win32.whl", hash = "sha256:7d6c01d2c0a352fa994aa91b5540d1caeaeaac466656eb41468ca5df33be9f2e"},
+    {file = "pyzbar-0.1.8-py2.py3-none-win_amd64.whl", hash = "sha256:496249b546be70ec98c0ff0ad9151e73daaffff129266df86150a15dcd8dac4c"},
 ]
 scipy = [
     {file = "scipy-1.6.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:a15a1f3fc0abff33e792d6049161b7795909b40b97c6cc2934ed54384017ab76"},

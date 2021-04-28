@@ -20,23 +20,36 @@ def generate(infolder, outfolder):
         df.dropna(how='all', axis=1, inplace=True)
         #print(df)
 
-        xlist = []
-        ylist = []
+        AXlist = []
+        AYlist = []
+        
+        BXlist = []
+        BYlist = []
 
         for i in range(0, len(df.columns), 2):
             dataList = df.iloc[:, [i, i+1]]
             dataList = dataList.dropna()
             dataList = dataList.reset_index(drop=True)
             print(dataList.columns[0], 'A side ' if 'HA' in str(dataList.columns[0]) else 'B side')
-            xlist.extend(dataList[dataList.columns[0]].tolist())
-            ylist.extend(dataList[dataList.columns[1]].tolist())
-
+            if 'HA' in str(dataList.columns[0]):
+                AXlist.extend(dataList[dataList.columns[0]].tolist())
+                AYlist.extend(dataList[dataList.columns[1]].tolist())
+            else:
+                BXlist.extend(dataList[dataList.columns[0]].tolist())
+                BYlist.extend(dataList[dataList.columns[1]].tolist())
 
         #print(len(xlist), len(ylist))
-        plt.scatter(xlist, ylist, s=2)
+        plt.scatter(AXlist, AYlist, s=2)
         outname, ext = os.path.splitext(file)
-        plt.savefig(f'{outfolder}/{outname}.png')
+        plt.gca().set_aspect('equal')
+        plt.savefig(f'{outfolder}/{outname}_A.png', dpi=600)
         plt.close()
+        
+        plt.scatter(BXlist, BYlist, s=2)
+        plt.gca().set_aspect('equal')
+        plt.savefig(f'{outfolder}/{outname}_B.png', dpi=600)
+        plt.close()
+        
 
     
 

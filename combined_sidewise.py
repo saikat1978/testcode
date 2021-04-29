@@ -7,7 +7,8 @@ from findcentroid import centroid
 
 
 typeMap = {
-    1: 'IRIS01-Hook-WaterStain-PreSput', 2: 'IRIS02-Polygon-SCR-Wash', 3: 'IRIS03-SymmetryMoon-AlODroplet-Sub'
+    1: 'IRIS01-Hook-WaterStain-PreSput', 2: 'IRIS02-Polygon-SCR-Wash', 
+    3: 'IRIS03-SymmetryMoon-AlODroplet-Sub', 5: 'IRIS05-TypicalCluster-TargetSpit-Sput'
 }
 
 BASE_DIR = '/Users/saikatchatterjee/Documents/SZ-IRIS'
@@ -42,25 +43,26 @@ def generate(infolder, outfolder):
                 BXlist.extend(dataList[dataList.columns[0]].tolist())
                 BYlist.extend(dataList[dataList.columns[1]].tolist())
 
-        #print(len(xlist), len(ylist))
+        
         #plt.axhline(color='black', lw=0.5)
         #plt.axvline(color='black', lw=0.5)
+        #plt.xlim(-5, 5)
         plt.scatter(AXlist, AYlist, s=2)
         outname, ext = os.path.splitext(file)
-        #plt.gca().set_aspect('equal')
+        plt.gca().set_aspect('equal')
         plt.axis('off')
         outfilename = f'{outfolder}/{outname}_A.png'
-        plt.savefig(outfilename)
+        plt.savefig(outfilename, dpi=300)
         plt.close()
         #centroid(outfilename)
         
         #plt.axhline(color='black', lw=0.5)
         #plt.axvline(color='black', lw=0.5)
         plt.scatter(BXlist, BYlist, s=2)
-        #plt.gca().set_aspect('equal')
+        plt.gca().set_aspect('equal')
         outfilename = f'{outfolder}/{outname}_B.png'
         plt.axis('off')
-        plt.savefig(outfilename)
+        plt.savefig(outfilename, dpi=300)
         plt.close()
         #centroid(outfilename)
         

@@ -45,26 +45,28 @@ if __name__=='__main__':
         shapesCount = 0
         for cnt in contours:
             moment=cv2.moments(cnt) 
-            cx = int(moment['m10'] / moment['m00']) 
-            cy = int(moment['m01'] / moment['m00']) 
-            shape, perimeter = detectShape(cnt) 
-            print(f'{shape}, {perimeter}')
-            '''
-            if shape == 'circle':
-                continue
-            else:
-                shapesCount = shapesCount + 1
-            '''
-            if perimeter >= 50:
-                shapesCount = shapesCount + 1
-                cv2.drawContours(img,[cnt],-1,(0,255,0),2)
-            elif perimeter >= 30 and perimeter < 50:
-                shapesCount = shapesCount + 1
-                cv2.drawContours(img,[cnt],-1,(255,0,0),2)
-            #cv2.putText(img,shape,(cx,cy),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
-            
-            outpath = os.path.join(os.getcwd(), 'polydetect', file)
-            cv2.imwrite(outpath,img) 
+           
+            if moment['m00'] > 0:
+                cx = int(moment['m10'] / moment['m00']) 
+                cy = int(moment['m01'] / moment['m00']) 
+                shape, perimeter = detectShape(cnt) 
+                print(f'{shape}, {perimeter}')
+                '''
+                if shape == 'circle':
+                    continue
+                else:
+                    shapesCount = shapesCount + 1
+                '''
+                if perimeter >= 80:
+                    shapesCount = shapesCount + 1
+                    cv2.drawContours(img,[cnt],-1,(0,255,0),2)
+                elif perimeter >= 50 and perimeter < 80:
+                    shapesCount = shapesCount + 1
+                    cv2.drawContours(img,[cnt],-1,(255,0,0),2)
+                #cv2.putText(img,shape,(cx,cy),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
+                
+                outpath = os.path.join(os.getcwd(), 'polydetect', file)
+                cv2.imwrite(outpath,img) 
         cv2.putText(img,str(shapesCount),(10,10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
         cv2.imwrite(outpath,img) 
     print('done')

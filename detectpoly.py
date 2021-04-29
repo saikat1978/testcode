@@ -58,6 +58,9 @@ if __name__=='__main__':
             if perimeter >= 50:
                 shapesCount = shapesCount + 1
                 cv2.drawContours(img,[cnt],-1,(0,255,0),2)
+            elif perimeter >= 30 and perimeter < 50:
+                shapesCount = shapesCount + 1
+                cv2.drawContours(img,[cnt],-1,(255,0,0),2)
             #cv2.putText(img,shape,(cx,cy),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
             
             outpath = os.path.join(os.getcwd(), 'polydetect', file)

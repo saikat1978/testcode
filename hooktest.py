@@ -40,7 +40,7 @@ if __name__=='__main__':
         img = cv2.imread(f'{folder}/{file}')
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         edged = cv2.Canny(gray, 170, 255) 
-        ret,thresh = cv2.threshold(gray,240,255,cv2.THRESH_BINARY) 
+        #ret,thresh = cv2.threshold(gray,240,255,cv2.THRESH_BINARY) 
         
         (contours,_) = cv2.findContours(edged,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
         shapesCount = 0
@@ -75,7 +75,7 @@ if __name__=='__main__':
     '''
     if total contours from A and B are less than 10, then its most probably a hook
     then take the highest area contour and consider its shape - circle, hexagon, polygon, or anything above triangle
-    
+
     '''
 
 

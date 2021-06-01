@@ -11,7 +11,7 @@ typeMap = {
     3: 'IRIS03-SymmetryMoon-AlODroplet-Sub', 5: 'IRIS05-TypicalCluster-TargetSpit-Sput'
 }
 
-BASE_DIR = '/Users/saikatchatterjee/Documents/SZ-IRIS'
+BASE_DIR = '/Users/saikatchatterjee/Documents/SZ-IRIS/18may'
 
 def generate(infolder, outfolder):
     
@@ -46,7 +46,7 @@ def generate(infolder, outfolder):
         
         #plt.axhline(color='black', lw=0.5)
         #plt.axvline(color='black', lw=0.5)
-        #plt.xlim(-5, 5)
+        plt.xlim(-51, 51)
         plt.scatter(AXlist, AYlist, s=2)
         outname, ext = os.path.splitext(file)
         plt.gca().set_aspect('equal')

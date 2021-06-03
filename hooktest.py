@@ -72,6 +72,8 @@ if __name__=='__main__':
     print('done')
 
 
+
+
     '''
     if total contours from A and B are less than 10, then its most probably a hook
     then take the highest area contour and consider its shape - circle, hexagon, polygon, or anything above triangle
